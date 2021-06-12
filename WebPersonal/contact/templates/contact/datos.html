@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %} {% load static %} {% block title %} Formulario Contactos {% endblock %} {% block background %} {% load static %} {% static 'core/img/contact.jpg' %} {% endblock %} {% block header %}
+
+<h1> Formulario de Contactos </h1>
+<span class="subheading"> Dejanos tus datos y nos comunicamos contigo. </span> {% endblock %} {% block content %}
+<div>
+    {% if 'ok' in request.GET %}
+    <span class="badge badge-pill badge-success"> su mensaje ha sido enviado correctamente en breve nos comunicaremos contigo</span> {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <div class="text-center">
+            <input type="submit" class="btn btn-primary btn-block py-2" value="Enviar correo.">
+        </div>
+    </form>
+</div>
+{% endblock %}
